@@ -1,9 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } 
-from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  }
- from "https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js";
+ from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+
+import { getFirestore,collection,addDoc, setDoc, doc }
+from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,9 +27,36 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 //module autenticvation
 const auth = getAuth();
+// firestore
+const db= getFirestore(app);
 //validar login
 export const Loginvalidation=(email,password)=>
 signInWithEmailAndPassword(auth, email, password)
 //registro de usuarios nuevos
 export const registeruser=(email,password)=>
 createUserWithEmailAndPassword(auth, email, password)
+
+///////firestore
+export const registeradddoc= (nombre,cedula,apellidos,ciudad)=>{
+  addDoc(collection(db,"DBdatos"),{
+    nombre,
+    cedula,
+    apellidos,
+    ciudad,
+
+  })
+
+  
+}
+export const registeruserdoc= (nombre,direccion,telefono,ciudad,departamento,rh,genero,email)=>{
+  setDoc(doc(db,"DBdatos2",email),{
+    nombre,
+    direccion,
+    telefono,
+    ciudad,
+    departamento,
+    rh,
+    genero,
+    email
+  })
+}

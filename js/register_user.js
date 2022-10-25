@@ -10,7 +10,7 @@ async function register(){
     const ConfirmUser= document.getElementById("edtConfirmuser");
     const ConfirmPass= document.getElementById("edtConfirmPass");
 
-    if (user.value === '' || ConfirmUser.value === ''|| pass.value === ''|| ConfirmPass===''){
+    if (user.value === '' || ConfirmUser.value === ''|| pass.value === ''|| ConfirmPass.value=== ''){
         
         alert("No puede haber campos vacios")
 
@@ -27,24 +27,27 @@ async function register(){
 
         alert("Las contraseñas deben ser de mas de 6 digitos")
 
+    }if(user.value === ConfirmUser.value && pass.value === ConfirmPass.value){
+
+        const user2= document.getElementById("edtuser").value
+        const pass2= document.getElementById("edtpassword").value
+
+        const registro = registeruser(user2,pass2)
+        const validation= await registro
+
+        if(validation != null){
+            alert("el usuario "+user2+" ha sido registrado con exito")
+            window.location.href="../index.html"
+        }
+        else
+        {
+            console.log("register"+user+"not validation")
+            alert("Error de usuario verifique usuario y/o contraseña")
+        }
+
     }
     
-    const user2= document.getElementById("edtuser").value
-    const pass2= document.getElementById("edtpassword").value
-
-    const registro = registeruser(user2,pass2)
-    const validation= await registro
-
-    if(validation != null){
-        alert("el usuario "+user2+" ha sido registrado con exito")
-        window.location.href="../index.html"
-    }
-    else
-    {
-        console.log("register"+user+"not validation")
-        alert("Error de usuario verifique usuario y/o contraseña")
-    }
-
+    
 
 }
 
