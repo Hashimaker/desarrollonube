@@ -5,7 +5,7 @@ from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  }
  from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
 
-import { getFirestore,collection,addDoc, setDoc, doc }
+import { getFirestore,collection,addDoc, setDoc, doc, getDoc }
 from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js'
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -28,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 //module autenticvation
 const auth = getAuth();
 // firestore
-const db= getFirestore(app);
+export const db= getFirestore(app);
 //validar login
 export const Loginvalidation=(email,password)=>
 signInWithEmailAndPassword(auth, email, password)
@@ -60,3 +60,4 @@ export const registeruserdoc= (nombre,direccion,telefono,ciudad,departamento,rh,
     email
   })
 }
+
