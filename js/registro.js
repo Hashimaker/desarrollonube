@@ -10,7 +10,7 @@ const formulario = document.getElementById("formulario")
 const conpassword=document.getElementById("con_pass").value*/
 
 
-async function registro(user,pass,nombre,direccion,telefono,ciu,dep,rh,gene,ConfirmUser,ConfirmPass){
+async function registro(user,pass,nombre,direccion,telefono,ciu,dep,rh,gene){
 
     try{
         const autentication = await registeruser(user,pass)
@@ -26,6 +26,14 @@ async function registro(user,pass,nombre,direccion,telefono,ciu,dep,rh,gene,Conf
             )
 
         alert("el usuario "+user+" ha sido registrado con exito")
+        console.log(nombre,
+            direccion,
+            telefono,
+            dep,
+            ciu,
+            rh,
+            gene,
+            user)
         window.location.href="../index.html"    
     } catch(error){
         console.log(error.code);

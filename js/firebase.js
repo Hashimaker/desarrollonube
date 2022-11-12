@@ -48,8 +48,8 @@ export const registeradddoc= (nombre,cedula,apellidos,ciudad)=>{
 
   
 }
-export const registeruserdoc= (nombre,direccion,telefono,ciudad,departamento,rh,genero,email)=>{
-  setDoc(doc(db,"DBdatos2",email),{
+export const registeruserdoc= (nombre,direccion,telefono,ciudad,departamento,rh,genero,user)=>{
+  setDoc(doc(db,"DBdatos2",user),{
     nombre,
     direccion,
     telefono,
@@ -57,7 +57,7 @@ export const registeruserdoc= (nombre,direccion,telefono,ciudad,departamento,rh,
     departamento,
     rh,
     genero,
-    email
+    user
   })
 }
 
