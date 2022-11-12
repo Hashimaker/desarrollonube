@@ -14,7 +14,7 @@ async function registro(user,pass,nombre,direccion,telefono,ciu,dep,rh,gene){
 
     try{
         const autentication = await registeruser(user,pass)
-        registeruserdoc(
+        const verificacion=registeruserdoc(
             nombre,
             direccion,
             telefono,
@@ -34,7 +34,9 @@ async function registro(user,pass,nombre,direccion,telefono,ciu,dep,rh,gene){
             rh,
             gene,
             user)
-        window.location.href="../index.html"    
+
+            formulario.reset()   
+        /**/    
     } catch(error){
         console.log(error.code);
     }
